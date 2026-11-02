@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf9fd;
+  --foreground: #1a1b1e;
+  --surface: #faf9fd;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f4f3f7;
+  --surface-container: #efedf1;
+  --surface-container-high: #e9e7eb;
+  --primary: #a33d23;
+  --primary-bright: #e76f51;
+  --on-primary: #ffffff;
+  --secondary: #006a60;
+  --border: #e7e5e0;
+  --text-primary: #202124;
+  --text-secondary: #737373;
+  --text-tertiary: #a3a29e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary-bright);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-geist-sans);
+  --font-manrope: Manrope, sans-serif;
+  --font-inter: Inter, sans-serif;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+* {
+  font-variant-ligatures: common-ligatures;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Manrope, sans-serif;
+}
+
+/* Tabular nums for pricing */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e7e5e0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
