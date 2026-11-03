@@ -51,7 +51,7 @@ export default function RegisterPage() {
       router.push("/dashboard");
       router.refresh();
     } catch (err: any) {
-      toast.error(err.data?.message || "Registration failed");
+      toast.error(err.data?.message || err.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -83,22 +83,22 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <Label>Full Name</Label>
-              <Input placeholder="Alex Rivera" {...register("name")} className="mt-1" />
+              <Input placeholder="Alex Rivera" {...register("name")} className="mt-1" id="name" type="text"/>
               {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name.message}</p>}
             </div>
             <div>
               <Label>Work Email</Label>
-              <Input type="email" placeholder="alex@productionlab.com" {...register("email")} className="mt-1" />
+              <Input id="email" type="email" placeholder="alex@productionlab.com" {...register("email")} className="mt-1" />
               {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email.message}</p>}
             </div>
             <div>
               <Label>Profile Photo URL (Optional)</Label>
-              <Input placeholder="https://i.ibb.co/..." {...register("photoURL")} className="mt-1" />
+              <Input placeholder="Image url here" {...register("photoURL")} className="mt-1" id="photoURL" type="url"/>
               {errors.photoURL && <p className="text-xs text-red-600 mt-1">{errors.photoURL.message}</p>}
             </div>
             <div>
               <Label>Password</Label>
-              <Input type="password" placeholder="••••••••" {...register("password")} className="mt-1" />
+              <Input id="password" type="password" placeholder="••••••••" {...register("password")} className="mt-1" />
               {errors.password && <p className="text-xs text-red-600 mt-1">{errors.password.message}</p>}
               <p className="mt-1 text-[11px] text-neutral-500">At least 6 chars, one uppercase, one lowercase</p>
             </div>

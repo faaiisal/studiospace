@@ -39,5 +39,6 @@ export const STORAGE_KEYS = {
   STUDIOS: "studiospace_demo_studios",
   BOOKINGS: "studiospace_demo_bookings",
   WISHLIST: "studiospace_demo_wishlist",
+  REGISTERED_USERS: "studiospace_demo_registered_users",
 };
 

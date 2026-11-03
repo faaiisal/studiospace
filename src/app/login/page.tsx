@@ -43,7 +43,7 @@ export default function LoginPage() {
       router.push("/dashboard");
       router.refresh();
     } catch (err: any) {
-      toast.error(err.data?.message || "Invalid credentials");
+      toast.error(err.data?.message || err.message || "Invalid credentials");
     } finally {
       setLoading(false);
     }
