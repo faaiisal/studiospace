@@ -34,11 +34,11 @@ export default function WishlistPage() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-8 md:px-12">
-      <h1 className="font-[Manrope] text-3xl font-semibold">Saved Studios & Wishlists</h1>
-      <p className="mt-1 text-sm text-neutral-600">Curated architectural stages for upcoming production treatments • {items.length} Saved Spaces</p>
+    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-12 overflow-x-hidden">
+      <h1 className="font-[Manrope] text-[22px] sm:text-3xl font-semibold break-words leading-tight">Saved Studios & Wishlists</h1>
+      <p className="mt-1 text-[12px] sm:text-sm text-neutral-600 break-words leading-5">Curated architectural stages for upcoming production treatments • {items.length} Saved Spaces</p>
 
-      <div className="mt-8">
+      <div className="mt-6 sm:mt-8">
         {loading ? (
           <StudioGridSkeleton count={6} />
         ) : items.length === 0 ? (
@@ -49,7 +49,7 @@ export default function WishlistPage() {
             actionHref="/studios"
           />
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item) => (
               <StudioCard key={item._id} studio={item.studio} isWishlisted={true} onWishlistToggle={handleToggle} />
             ))}

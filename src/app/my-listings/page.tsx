@@ -50,20 +50,20 @@ export default function MyListingsPage() {
     }
   };
 
-  if (loading) return <div className="mx-auto max-w-7xl px-6 py-12"><StudioGridSkeleton count={3} /></div>;
+  if (loading) return <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:px-8 lg:px-12"><StudioGridSkeleton count={3} /></div>;
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-8 md:px-12">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="font-[Manrope] text-3xl font-semibold">My Studio Listings</h1>
-          <p className="mt-1 text-sm text-neutral-600">Manage your architectural spaces, calendar rules, and rates</p>
+    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-12 overflow-x-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+        <div className="min-w-0">
+          <h1 className="font-[Manrope] text-[22px] sm:text-3xl font-semibold break-words leading-tight">My Studio Listings</h1>
+          <p className="mt-1 text-[12px] sm:text-sm text-neutral-600 break-words leading-5">Manage your architectural spaces, calendar rules, and rates</p>
         </div>
-        <Link href="/add-studio"><Button className="gap-2"><Plus size={16} /> Add New Studio</Button></Link>
+        <Link href="/add-studio" className="w-full sm:w-auto shrink-0"><Button className="gap-2 w-full sm:w-auto min-h-[44px]"><Plus size={16} /> Add New Studio</Button></Link>
       </div>
 
       {studios.length === 0 ? (
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-12">
           <EmptyState
             title="You haven't listed any studio spaces yet"
             description="Earn revenue by sharing your creative workspace with filmmakers, photographers, and production teams."
@@ -72,23 +72,23 @@ export default function MyListingsPage() {
           />
         </div>
       ) : (
-        <div className="mt-8 grid gap-4">
+        <div className="mt-6 sm:mt-8 grid gap-3 sm:gap-4">
           {studios.map((studio) => (
-            <Card key={studio._id} className="p-4 flex flex-col md:flex-row gap-4 items-center">
-              <img src={studio.images[0]} alt={studio.title} className="h-20 w-20 rounded-xl object-cover" />
+            <Card key={studio._id} className="p-3 sm:p-4 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center min-w-0">
+              <img src={studio.images?.[0] || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=200"} alt={studio.title} className="h-16 w-full sm:h-20 sm:w-20 rounded-xl object-cover shrink-0 aspect-[4/3] sm:aspect-square" />
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold line-clamp-1">{studio.title}</h3>
-                <p className="text-sm text-neutral-500">{studio.location} • ${studio.hourlyRate}/hr • {studio.maxCapacity} capacity</p>
-                <div className="mt-1 flex gap-2">
-                  <span className="rounded-full bg-green-100 px-2 py-1 text-xs text-green-800">Active</span>
-                  <span className="text-xs text-neutral-500">{studio.category}</span>
+                <h3 className="font-semibold line-clamp-2 sm:line-clamp-1 break-words text-[14px] sm:text-[15px]">{studio.title}</h3>
+                <p className="text-[12px] sm:text-sm text-neutral-500 break-words line-clamp-2 mt-1">{studio.location} • ${studio.hourlyRate}/hr • {studio.maxCapacity} capacity</p>
+                <div className="mt-1.5 flex flex-wrap gap-1.5 sm:gap-2">
+                  <span className="rounded-full bg-green-100 px-2 py-1 text-[10px] sm:text-xs text-green-800">Active</span>
+                  <span className="text-[11px] sm:text-xs text-neutral-500 truncate">{studio.category}</span>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <Link href={`/studios/${studio._id}`}><Button variant="outline" size="sm"><Eye size={14} /> View</Button></Link>
-                <Link href={`/studios/edit/${studio._id}`}><Button variant="outline" size="sm"><Edit size={14} /> Edit</Button></Link>
-                <Button variant="outline" size="sm"><Calendar size={14} /> Calendar</Button>
-                <Button variant="destructive" size="sm" onClick={() => setDeleteTarget(studio._id)}><Trash2 size={14} /></Button>
+              <div className="grid grid-cols-2 sm:flex gap-2 w-full sm:w-auto shrink-0">
+                <Link href={`/studios/${studio._id}`} className="w-full sm:w-auto"><Button variant="outline" size="sm" className="w-full min-h-[36px] text-[12px] gap-1"><Eye size={14} /> View</Button></Link>
+                <Link href={`/studios/edit/${studio._id}`} className="w-full sm:w-auto"><Button variant="outline" size="sm" className="w-full min-h-[36px] text-[12px] gap-1"><Edit size={14} /> Edit</Button></Link>
+                <Button variant="outline" size="sm" className="min-h-[36px] text-[12px] gap-1 hidden sm:flex"><Calendar size={14} /> Calendar</Button>
+                <Button variant="destructive" size="sm" onClick={() => setDeleteTarget(studio._id)} className="min-h-[36px] col-span-2 sm:col-span-1"><Trash2 size={14} /></Button>
               </div>
             </Card>
           ))}
