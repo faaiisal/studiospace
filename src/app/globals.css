@@ -36,20 +36,54 @@
   font-variant-ligatures: common-ligatures;
 }
 
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--text-primary);
   font-family: Inter, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-width: 320px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Manrope, sans-serif;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Prevent horizontal overflow from any element */
+* {
+  min-width: 0;
 }
 
 /* Tabular nums for pricing */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid #E76F51;
+  outline-offset: 2px;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Scrollbar */
@@ -63,5 +97,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 ::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Ensure touch targets minimum */
+@media (max-width: 768px) {
+  button, a, [role="button"] {
+    min-height: 0;
+  }
 }
 

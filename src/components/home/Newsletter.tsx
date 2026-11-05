@@ -19,15 +19,15 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="border-t border-neutral-200 bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <h3 className="font-semibold">Get Studio Drops & Editorial Stories</h3>
-          <p className="text-sm text-neutral-600">New verified spaces weekly, production insights, and technical spotlights.</p>
+    <section className="border-t border-neutral-200 bg-white overflow-x-hidden">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 md:px-8 lg:px-12 md:py-12 flex flex-col md:flex-row md:items-center items-start justify-between gap-5 sm:gap-6">
+        <div className="min-w-0 flex-1">
+          <h3 className="font-semibold break-words text-[15px] sm:text-base">Get Studio Drops & Editorial Stories</h3>
+          <p className="text-[13px] sm:text-sm text-neutral-600 break-words leading-5 mt-1">New verified spaces weekly, production insights, and technical spotlights.</p>
         </div>
-        <form onSubmit={handleSubmit} className="flex w-full max-w-md gap-2">
-          <Input placeholder="Work email" value={email} onChange={(e) => setEmail(e.target.value)} className="flex-1" />
-          <Button type="submit">Subscribe</Button>
+        <form onSubmit={handleSubmit} className="flex w-full max-w-md gap-2 flex-col xs:flex-row sm:flex-row">
+          <Input placeholder="Work email" value={email} onChange={(e) => setEmail(e.target.value)} className="flex-1 min-w-0 min-h-[48px]" aria-label="Email for newsletter" />
+          <Button type="submit" className="shrink-0 min-h-[48px] w-full xs:w-auto">Subscribe</Button>
         </form>
       </div>
     </section>
